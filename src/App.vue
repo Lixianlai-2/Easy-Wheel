@@ -6,7 +6,7 @@
   <router-view></router-view>
 </template>
 
-<script>
+<script lang="ts">
 import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
 import { ref } from "@vue/reactivity";
@@ -15,8 +15,8 @@ export default {
   name: "App",
   components: { Home, Doc },
   setup() {
-    let asideVisible = ref(false);
-    provide('asideVisible',asideVisible);
+    let asideVisible = ref<boolean>(false);
+    provide("asideVisible", asideVisible);
   },
 };
 </script>

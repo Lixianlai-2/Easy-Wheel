@@ -16,14 +16,14 @@
   </div>
 </template>
 
-<script>
-import { inject } from "@vue/runtime-core";
+<script lang="ts">
+import { inject, Ref } from "@vue/runtime-core";
 import Topnav from "../components/Topnav.vue";
 export default {
   name: "Doc",
   components: { Topnav },
   setup() {
-    let asideVisible = inject("asideVisible");
+    let asideVisible = inject<Ref>("asideVisible");
     return {
       asideVisible,
     };
