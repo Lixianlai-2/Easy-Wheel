@@ -11,6 +11,7 @@ import Home from "./views/Home.vue";
 import Doc from "./views/Doc.vue";
 import { ref } from "@vue/reactivity";
 import { provide } from "@vue/runtime-core";
+import router from "./router";
 export default {
   name: "App",
   components: { Home, Doc },
@@ -18,6 +19,12 @@ export default {
     let viewportWidth = document.documentElement.clientWidth;
 
     let asideVisible = ref(viewportWidth > 500 ? true : false);
+    router.afterEach((to, from, failure) => {
+      console.log("路由切换了");
+      if (viewportWidth <= 500) {
+        asideVisible.value = false;
+      }
+    });
 
     provide("asideVisible", asideVisible);
   },
