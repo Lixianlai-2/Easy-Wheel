@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tapnav />
+    <Topnav />
     <div class="banner">
       <h1>Easy UI</h1>
       <h2>一个容易理解的 UI 框架</h2>
@@ -13,15 +13,15 @@
 </template>
 
 <script lang="ts">
-import Tapnav from "../components/Tapnav.vue";
+import Topnav from "../components/Topnav.vue";
 export default {
   name: "Home",
-  components: { Tapnav },
+  components: { Topnav },
 };
 </script>
 
 <style lang="scss" scoped>
-.tapnav {
+.topnav {
   background: pink;
   display: flex;
   padding: 16px;

@@ -1,5 +1,5 @@
 <template>
-  <div class="tapnav">
+  <div class="topnav">
     <div class="logo">LOGO</div>
     <ul class="menu">
       <li>菜单1</li>
@@ -10,15 +10,17 @@
 
 <script>
 export default {
-  name: "Tapnav",
+  name: "Topnav",
 };
 </script>
 
 <style lang="scss" scoped>
-.tapnav {
+.topnav {
   background: pink;
   display: flex;
   padding: 16px;
+  position: relative;
+  z-index: 10;
   > .logo {
     max-width: 6em;
     margin-right: auto;

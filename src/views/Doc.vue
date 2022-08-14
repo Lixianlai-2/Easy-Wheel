@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Tapnav />
+    <Topnav />
     <div class="content">
       <aside>
         <h2>组件列表</h2>
@@ -17,10 +17,10 @@
 </template>
 
 <script>
-import Tapnav from "../components/Tapnav.vue";
+import Topnav from "../components/Topnav.vue";
 export default {
   name: "Doc",
-  components: { Tapnav },
+  components: { Topnav },
 };
 </script>
 
@@ -32,6 +32,7 @@ aside {
   position: fixed;
   top: 0;
   left: 0;
+  padding-top: 70px;
   > h2 {
     margin-bottom: 4px;
   }
