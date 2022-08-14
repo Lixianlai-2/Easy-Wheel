@@ -1,22 +1,16 @@
 <template>
-  <div>
-    <Tapnav />
-    <div class="banner">
-      <h1>Easy UI</h1>
-      <h2>一个容易理解的 UI 框架</h2>
-      <p class="actions">
-        <a href="#">GitHub</a>
-        <a href="#">开始</a>
-      </p>
-    </div>
+  <div class="tapnav">
+    <div class="logo">LOGO</div>
+    <ul class="menu">
+      <li>菜单1</li>
+      <li>菜单2</li>
+    </ul>
   </div>
 </template>
 
-<script lang="ts">
-import Tapnav from "../components/Tapnav.vue";
+<script>
 export default {
-  name: "Home",
-  components: { Tapnav },
+  name: "Tapnav",
 };
 </script>
 
