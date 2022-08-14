@@ -5,8 +5,8 @@
       <h1>Easy UI</h1>
       <h2>一个容易理解的 UI 框架</h2>
       <p class="actions">
-        <a href="#">GitHub</a>
-        <a href="#">开始</a>
+        <a href="https://github.com/Lixianlai-2/Easy-Wheel">GitHub</a>
+        <router-link to="/doc">开始</router-link>
       </p>
     </div>
   </div>
