@@ -23,7 +23,7 @@ export default {
   name: "Doc",
   components: { Topnav },
   setup() {
-    let asideVisible = inject<Ref>("asideVisible");
+    let asideVisible = inject<Ref<boolean>>("asideVisible");
     return {
       asideVisible,
     };
@@ -47,6 +47,12 @@ aside {
     > li {
       padding: 4px 0;
     }
+  }
+  @media (max-width: 500px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
   }
 }
 </style>

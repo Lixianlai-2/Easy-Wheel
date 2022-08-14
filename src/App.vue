@@ -15,7 +15,10 @@ export default {
   name: "App",
   components: { Home, Doc },
   setup() {
-    let asideVisible = ref<boolean>(false);
+    let viewportWidth = document.documentElement.clientWidth;
+
+    let asideVisible = ref(viewportWidth > 500 ? true : false);
+
     provide("asideVisible", asideVisible);
   },
 };
