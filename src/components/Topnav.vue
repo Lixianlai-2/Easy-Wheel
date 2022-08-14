@@ -1,6 +1,6 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo" @click="asideVisible = !asideVisible">LOGO</div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -9,8 +9,13 @@
 </template>
 
 <script>
+import { inject } from "@vue/runtime-core";
 export default {
   name: "Topnav",
+  setup() {
+    let asideVisible = inject("asideVisible");
+    return { asideVisible };
+  },
 };
 </script>
 

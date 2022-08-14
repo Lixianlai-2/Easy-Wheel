@@ -2,7 +2,7 @@
   <div>
     <Topnav />
     <div class="content">
-      <aside>
+      <aside v-show="asideVisible">
         <h2>组件列表</h2>
         <ol>
           <li><router-link to="/doc/switch">Switch 组件</router-link></li>
@@ -17,10 +17,17 @@
 </template>
 
 <script>
+import { inject } from "@vue/runtime-core";
 import Topnav from "../components/Topnav.vue";
 export default {
   name: "Doc",
   components: { Topnav },
+  setup() {
+    let asideVisible = inject("asideVisible");
+    return {
+      asideVisible,
+    };
+  },
 };
 </script>
 
