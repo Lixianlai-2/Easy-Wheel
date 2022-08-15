@@ -1,19 +1,24 @@
 <template>
   <div>
-    <button @click="toggle" :class="{ checked }"><span></span></button>
+    <button @click="toggle" :class="{ checked: value }"><span></span></button>
   </div>
+  {{ value }}
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from "@vue/reactivity";
+
 export default {
-  setup() {
-    let checked = ref(false);
+  props: {
+    value: Boolean,
+  },
+  setup(props, context) {
+    // let checked = ref(false);
     let toggle = () => {
-      checked.value = !checked.value;
+      context.emit("input", !props.value);
     };
     return {
-      checked,
+      // checked,
       toggle,
     };
   },
