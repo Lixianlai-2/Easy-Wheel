@@ -1,18 +1,20 @@
 <template>
   <div>
-    <Switch :value="y" @input="y = $event" />
+    <!-- 通过input事件传入值 -->
+    <Switch :value="x" @input="x = $event" />
   </div>
 </template>
 
 <script>
-import { ref } from '@vue/reactivity';
+import { ref } from "@vue/reactivity";
 import Switch from "../lip/Switch.vue";
 export default {
   components: { Switch },
   setup() {
-    // 设置初始值，但是这个y有什么用呢？
-    const y = ref(false);
-    return { y };
+    let x = ref(true);
+    return {
+      x,
+    };
   },
 };
 </script>

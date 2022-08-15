@@ -2,7 +2,6 @@
   <div>
     <button @click="toggle" :class="{ checked: value }"><span></span></button>
   </div>
-  {{ value }}
 </template>
 
 <script lang="ts">
@@ -12,8 +11,8 @@ export default {
   props: {
     value: Boolean,
   },
+  emits: ["input"],
   setup(props, context) {
-    // let checked = ref(false);
     let toggle = () => {
       context.emit("input", !props.value);
     };
