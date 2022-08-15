@@ -11,12 +11,11 @@ export default {
   props: {
     value: Boolean,
   },
-  emits: ["input"],
+  // emits: ["input"],
   setup(props, context) {
-    !props.value;
-
     let toggle = () => {
-      context.emit("input", !props.value);
+      // context.emit("input", !props.value);
+      context.emit("update:value", !props.value);
     };
     return {
       toggle,

@@ -1,7 +1,8 @@
 <template>
   <div>
     <!-- 通过input事件传入值 -->
-    <Switch :value="bool" @input="bool = $event" />
+    <!-- <Switch :value="bool" @input="bool = $event" /> -->
+    <Switch v-model:value="bool" />
   </div>
 </template>
 
