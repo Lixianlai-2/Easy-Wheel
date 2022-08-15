@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- 通过input事件传入值 -->
-    <Switch :value="x" @input="x = $event" />
+    <Switch :value="bool" @input="bool = $event" />
   </div>
 </template>
 
@@ -11,9 +11,9 @@ import Switch from "../lip/Switch.vue";
 export default {
   components: { Switch },
   setup() {
-    let x = ref(true);
+    let bool = ref(false);
     return {
-      x,
+      bool,
     };
   },
 };

@@ -13,11 +13,12 @@ export default {
   },
   emits: ["input"],
   setup(props, context) {
+    !props.value;
+
     let toggle = () => {
       context.emit("input", !props.value);
     };
     return {
-      // checked,
       toggle,
     };
   },
