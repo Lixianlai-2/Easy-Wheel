@@ -1,6 +1,5 @@
 <template>
-  <!-- 添加相同的样式,然后添加动态样式 -->
-  <button class="easy-button" :class="theme">
+  <button class="gulu-button" :class="{ [`gulu-theme-${theme}`]: theme }">
     <slot />
   </button>
 </template>
@@ -8,14 +7,14 @@
 <script lang="ts">
 export default {
   // props接收数据的完整写法
-  props: {
-    theme: {
-      // 指定接收类型
-      type: String,
-      // 指定默认值
-      default: "button",
-    },
-  },
+  // props: {
+  //   theme: {
+  //     // 指定接收类型
+  //     type: String,
+  //     // 指定默认值
+  //     default: "button",
+  //   },
+  // },
   // setup(props, context) {
   //   // 这里用到了展开运算符和剩余运算符,得到从父组件传递来的属性
   //   const { size, ...rest } = context.attrs;
@@ -37,7 +36,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
-.easy-button {
+.gulu-button {
   border: 1px solid $border-color;
   box-sizing: border-box;
   height: $h;
@@ -54,8 +53,8 @@ $radius: 4px;
   border-radius: $radius;
 
   box-shadow: 0 1px 0 fade-out(black, 0.95);
-  // &代表当前处理的元素，这里是easy-button
-  //  + 代表相邻的选择器，所以这里的意思是，如果当前元素easy-button，遇到了相邻的，同样也是easy-button,就设置margin-left
+  // &代表当前处理的元素，这里是gulu-button
+  //  + 代表相邻的选择器，所以这里的意思是，如果当前元素gulu-button，遇到了相邻的，同样也是gulu-button,就设置margin-left
   & + & {
     margin-left: 8px;
   }
@@ -73,7 +72,7 @@ $radius: 4px;
     border: 0;
   }
 }
-// .easy-button {
+// .gulu-button {
 //   box-sizing: border-box;
 //   height: $h;
 //   padding: 0 12px;

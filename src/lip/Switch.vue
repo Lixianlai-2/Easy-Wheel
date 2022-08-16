@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <button @click="toggle" :class="{ checked: value }"><span></span></button>
-  </div>
+  <!-- 增加一个有前缀的class -->
+  <button class="gulu-switch" @click="toggle" :class="{ checked: value }">
+    <span></span>
+  </button>
 </template>
 
 <script lang="ts">
@@ -27,7 +28,7 @@ export default {
 <style lang="scss">
 $h: 22px;
 $h2: $h - 4px;
-button {
+.gulu-switch {
   height: $h;
   width: $h * 2;
   border-radius: $h / 2;
@@ -35,6 +36,28 @@ button {
   border: none;
   background-color: #bfbfbf;
   // background-color: #0d8cff;
+  &.checked {
+    background-color: #0d8cff;
+  }
+
+  &.checked > span {
+    left: calc(100% - #{$h2} - 2px);
+  }
+
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    > span {
+      width: $h2 + 4px;
+    }
+  }
+  &.checked:active {
+    > span {
+      width: $h2 + 4px;
+      margin-left: -4px;
+    }
+  }
 }
 span {
   height: $h2;
@@ -45,27 +68,5 @@ span {
   top: 2px;
   left: 2px;
   transition: all 250ms;
-}
-button.checked {
-  background-color: #0d8cff;
-}
-
-button.checked > span {
-  left: calc(100% - #{$h2} - 2px);
-}
-
-button:focus {
-  outline: none;
-}
-button:active {
-  > span {
-    width: $h2 + 4px;
-  }
-}
-button.checked:active {
-  > span {
-    width: $h2 + 4px;
-    margin-left: -4px;
-  }
 }
 </style>
