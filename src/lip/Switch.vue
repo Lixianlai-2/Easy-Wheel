@@ -1,6 +1,10 @@
 <template>
   <!-- 增加一个有前缀的class -->
-  <button class="gulu-switch" @click="toggle" :class="{ checked: value }">
+  <button
+    class="gulu-switch"
+    @click="toggle"
+    :class="{ 'gulu-checked': value }"
+  >
     <span></span>
   </button>
 </template>
@@ -36,11 +40,11 @@ $h2: $h - 4px;
   border: none;
   background-color: #bfbfbf;
   // background-color: #0d8cff;
-  &.checked {
+  &.gulu-checked {
     background-color: #0d8cff;
   }
 
-  &.checked > span {
+  &.gulu-checked > span {
     left: calc(100% - #{$h2} - 2px);
   }
 
@@ -52,7 +56,7 @@ $h2: $h - 4px;
       width: $h2 + 4px;
     }
   }
-  &.checked:active {
+  &.gulu-checked:active {
     > span {
       width: $h2 + 4px;
       margin-left: -4px;
