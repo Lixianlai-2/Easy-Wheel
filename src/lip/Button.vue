@@ -1,6 +1,6 @@
 <template>
   <!-- 添加相同的样式,然后添加动态样式 -->
-  <button class="gulu-button" :class="theme">
+  <button class="easy-button" :class="theme">
     <slot />
   </button>
 </template>
@@ -30,14 +30,14 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 // $h是什么？指定变量，方便复用
 $h: 32px;
 $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
-.gulu-button {
+.easy-button {
   border: 1px solid $border-color;
   box-sizing: border-box;
   height: $h;
@@ -54,8 +54,8 @@ $radius: 4px;
   border-radius: $radius;
 
   box-shadow: 0 1px 0 fade-out(black, 0.95);
-  // &代表当前处理的元素，这里是gulu-button
-  //  + 代表相邻的选择器，所以这里的意思是，如果当前元素gulu-button，遇到了相邻的，同样也是gulu-button,就设置margin-left
+  // &代表当前处理的元素，这里是easy-button
+  //  + 代表相邻的选择器，所以这里的意思是，如果当前元素easy-button，遇到了相邻的，同样也是easy-button,就设置margin-left
   & + & {
     margin-left: 8px;
   }
@@ -73,7 +73,7 @@ $radius: 4px;
     border: 0;
   }
 }
-// .gulu-button {
+// .easy-button {
 //   box-sizing: border-box;
 //   height: $h;
 //   padding: 0 12px;
