@@ -1,36 +1,32 @@
 <template>
-  <!-- 绑定动态属性size -->
-  <div :size="size">
-    <!-- 直接绑定从父组件传来的属性和事件 -->
-    <button v-bind="$attrs">
-      <!-- <button v-bind="rest"> -->
-      <slot />
-    </button>
-  </div>
-
-  <!-- <div class="这里是根元素">
-    <button>
-      <slot />
-    </button>
-  </div> -->
+  <!-- 添加相同的样式,然后添加动态样式 -->
+  <button class="gulu-button" :class="theme">
+    <slot />
+  </button>
 </template>
 
 <script lang="ts">
 export default {
-  // 用于判断根元素继承属性,设置为否，继承的是从父组件传入的
-  inheritAttrs: false,
-  // props: ["onMouseover"],
-  setup(props, context) {
-    // 这里用到了展开运算符和剩余运算符,得到从父组件传递来的属性
-    const { size, ...rest } = context.attrs;
-    console.log(`rest`, rest);
-    //context.attrs得到的是写什么数据？得到的是，未经过Props接收的，从父组件传递过来的属性
-    console.log(`context.attrs@@`, context.attrs);
-    return {
-      size,
-      rest,
-    };
+  // props接收数据的完整写法
+  props: {
+    theme: {
+      // 指定接收类型
+      type: String,
+      // 指定默认值
+      default: "button",
+    },
   },
+  // setup(props, context) {
+  //   // 这里用到了展开运算符和剩余运算符,得到从父组件传递来的属性
+  //   const { size, ...rest } = context.attrs;
+  //   console.log(`rest`, rest);
+  //   //context.attrs得到的是写什么数据？得到的是，未经过Props接收的，从父组件传递过来的属性
+  //   console.log(`context.attrs@@`, context.attrs);
+  //   return {
+  //     size,
+  //     rest,
+  //   };
+  // },
 };
 </script>
 
