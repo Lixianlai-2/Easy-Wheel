@@ -1,31 +1,22 @@
 <template>
-  <button class="gulu-button" :class="{ [`gulu-theme-${theme}`]: theme }">
+  <button class="gulu-button" :class="classObj">
+    <!-- <button class="gulu-button" :class="{ [`gulu-theme-${theme}`]: theme }"> -->
     <slot />
   </button>
 </template>
 
 <script lang="ts">
+import { reactive } from "@vue/reactivity";
 export default {
-  // props接收数据的完整写法
-  // props: {
-  //   theme: {
-  //     // 指定接收类型
-  //     type: String,
-  //     // 指定默认值
-  //     default: "button",
-  //   },
-  // },
-  // setup(props, context) {
-  //   // 这里用到了展开运算符和剩余运算符,得到从父组件传递来的属性
-  //   const { size, ...rest } = context.attrs;
-  //   console.log(`rest`, rest);
-  //   //context.attrs得到的是写什么数据？得到的是，未经过Props接收的，从父组件传递过来的属性
-  //   console.log(`context.attrs@@`, context.attrs);
-  //   return {
-  //     size,
-  //     rest,
-  //   };
-  // },
+  props: ["theme"],
+  setup(props) {
+    const classObj = reactive({
+      [`gulu-theme-${props.theme}`]: props.theme,
+    });
+    return {
+      classObj,
+    };
+  },
 };
 </script>
 
