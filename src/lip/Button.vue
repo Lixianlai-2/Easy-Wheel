@@ -1,18 +1,37 @@
 <template>
   <button class="gulu-button" :class="classObj">
-    <!-- <button class="gulu-button" :class="{ [`gulu-theme-${theme}`]: theme }"> -->
     <slot />
   </button>
 </template>
 
 <script lang="ts">
 import { reactive } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
 export default {
-  props: ["theme"],
+  // props完整写法，可设置默认值，指定类型，指定是否强制需要
+  props: {
+    theme: {
+      default: "button",
+    },
+    size: {
+      default: "normal",
+    },
+  },
   setup(props) {
+    // 动态绑定class的对象写法
     const classObj = reactive({
       [`gulu-theme-${props.theme}`]: props.theme,
+      [`gulu-size-${props.size}`]: props.size,
     });
+
+    // 动态绑定class用计算属性，实际上还是对象写法
+    // const classObj = computed(() => {
+    //   return {
+    //     [`gulu-theme-${props.theme}`]: props.theme,
+    //     [`gulu-size-${props.size}`]: props.size,
+    //   };
+    // });
+
     return {
       classObj,
     };
@@ -27,6 +46,7 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
+// -------------------------------------
 .gulu-button {
   border: 1px solid $border-color;
   box-sizing: border-box;
@@ -81,6 +101,18 @@ $radius: 4px;
     &:focus {
       background: darken(white, 5%);
     }
+  }
+  // -----------下方示例二-------------------
+  &.gulu-size-big {
+    font-size: 24px;
+    height: 48px;
+    padding: 0 16px;
+  }
+
+  &.gulu-size-small {
+    font-size: 12px;
+    height: 20px;
+    padding: 0 4px;
   }
 }
 </style>
