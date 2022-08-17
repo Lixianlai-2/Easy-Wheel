@@ -8,22 +8,30 @@
 import { reactive } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 export default {
-  // props完整写法，可设置默认值，指定类型，指定是否强制需要
-  props: {
-    theme: {
-      default: "button",
-    },
-    size: {
-      default: "normal",
-    },
-  },
+  // #region
+  // props 完整写法，可设置默认值，指定类型，指定是否强制需要
+  // props: {
+  //   theme: {
+  //     default: "button",
+  //   },
+  //   size: {
+  //     default: "normal",
+  //   },
+  //   level: {
+  //     default: "normal",
+  //   },
+  // },
+  //#endregion
+
+  //props的数组接收方式
+  props: ["theme", "size", "level"],
   setup(props) {
     // 动态绑定class的对象写法
     const classObj = reactive({
       [`gulu-theme-${props.theme}`]: props.theme,
       [`gulu-size-${props.size}`]: props.size,
+      [`gulu-level-${props.level}`]: props.level,
     });
-
     // 动态绑定class用计算属性，实际上还是对象写法
     // const classObj = computed(() => {
     //   return {
@@ -46,7 +54,9 @@ $border-color: #d9d9d9;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
+$red: red;
 // -------------------------------------
+// .gulu-button是共有的属性
 .gulu-button {
   border: 1px solid $border-color;
   box-sizing: border-box;
@@ -62,10 +72,11 @@ $radius: 4px;
   background: white;
   color: $color;
   border-radius: $radius;
-
+  // 这行代码有什么用？
+  transition: background 250ms;
   box-shadow: 0 1px 0 fade-out(black, 0.95);
   // &代表当前处理的元素，这里是gulu-button
-  //  + 代表相邻的选择器，所以这里的意思是，如果当前元素gulu-button，遇到了相邻的，同样也是gulu-button,就设置margin-left
+  // + 代表相邻的选择器，所以这里的意思是，如果当前元素gulu-button，遇到了相邻的，同样也是gulu-button,就设置margin-left
   & + & {
     margin-left: 8px;
   }
@@ -93,6 +104,7 @@ $radius: 4px;
     }
   }
 
+  // 设置文本按钮样式
   &.gulu-theme-text {
     border-color: transparent;
     box-shadow: none;
@@ -102,7 +114,8 @@ $radius: 4px;
       background: darken(white, 5%);
     }
   }
-  // -----------下方示例二-------------------
+  // -----------下方为大小按钮-------------------
+  // 这里的意思是，.gulu-button的同时，还时下面的class，进行以下操作
   &.gulu-size-big {
     font-size: 24px;
     height: 48px;
@@ -113,6 +126,59 @@ $radius: 4px;
     font-size: 12px;
     height: 20px;
     padding: 0 4px;
+  }
+  // -----------下方为级别按钮------------------
+  //  针对普通按钮类型
+
+  // 为什么按钮类型，没有生效？因为我在父组件传数据的时候，么有写theme="button"，所以没有这个class
+  &.gulu-theme-button {
+    &.gulu-level-main {
+      background: $blue;
+      color: white;
+      border-color: $blue;
+      &:hover,
+      &focus {
+        background: darken($blue, 10%);
+        border-color: darken($blue, 10%);
+      }
+    }
+    &.gulu-level-danger {
+      background: $red;
+      border-color: $red;
+      color: white;
+      &:hover,
+      &:focus {
+        background: darken($red, 10%);
+        border-color: darken($red, 10%);
+      }
+    }
+  }
+  //  针对链接按钮类型
+  &.gulu-theme-link {
+    &.gulu-level-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darden($red, 10%);
+      }
+    }
+  }
+  // 针对文本按钮类型
+  &.gulu-theme-text {
+    &.gulu-level-main {
+      color: rgb(61, 220, 61);
+      &:hover,
+      &:focus {
+        color: darken(rgb(247, 149, 21), 20%);
+      }
+    }
+    &.gulu-level-danger {
+      color: $red;
+      &:hover,
+      &:focus {
+        color: darden($red, 10%);
+      }
+    }
   }
 }
 </style>
