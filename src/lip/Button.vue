@@ -1,30 +1,36 @@
 <template>
+  <!-- 通过props接收的数据，就不会出现在attrs里面了 -->
   <button class="gulu-button" :class="classObj">
+    <!-- span并没有随着我设置的默认值而变化 -->
+    <div v-if="loading" class="gulu-loadingIndicator"></div>
     <slot />
   </button>
 </template>
 
 <script lang="ts">
 import { reactive } from "@vue/reactivity";
-import { computed } from "@vue/runtime-core";
+// import { computed } from "@vue/runtime-core";
 export default {
   // #region
   // props 完整写法，可设置默认值，指定类型，指定是否强制需要
-  // props: {
-  //   theme: {
-  //     default: "button",
-  //   },
-  //   size: {
-  //     default: "normal",
-  //   },
-  //   level: {
-  //     default: "normal",
-  //   },
-  // },
+  props: {
+    theme: {
+      default: "button",
+    },
+    size: {
+      default: "normal",
+    },
+    level: {
+      default: "normal",
+    },
+    loading: {
+      default: false,
+    },
+  },
   //#endregion
 
   //props的数组接收方式
-  props: ["theme", "size", "level"],
+  // props: ["theme", "size", "level"],
   setup(props) {
     // 动态绑定class的对象写法
     const classObj = reactive({
@@ -55,6 +61,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$grey: grey;
 // -------------------------------------
 // .gulu-button是共有的属性
 .gulu-button {
@@ -179,6 +186,45 @@ $red: red;
         color: darden($red, 10%);
       }
     }
+  }
+  // -----------下方为禁用按钮------------------
+  &.gulu-theme-button {
+    // 选择带有disable属性的所有元素
+    &[disabled] {
+      // 禁用cursor;
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+
+  &.gulu-theme-link,
+  &.gulu-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+    }
+  }
+  // -----------下方为加载中-----------------
+  .gulu-loadingIndicator {
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+    border-radius: 8px;
+    border-color: $blue $blue $blue transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: gulu-spin 1s infinite linear;
+  }
+}
+@keyframes gulu-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

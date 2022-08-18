@@ -49,6 +49,19 @@
     <Button theme="link">普通链接</Button>
     <Button theme="link" level="danger">危险链接</Button>
   </div>
+  <!------------------------------>
+  <h1>示例4</h1>
+  <div>
+    <!-- 注意，这个disabled不要通过props接收，不然在组件上就找不到了，跑到props里面去了 -->
+    <Button disabled>禁用按钮</Button>
+    <Button theme="link" disabled>禁用链接</Button>
+    <Button theme="text" disabled>禁用文本</Button>
+  </div>
+  <!------------------------------>
+  <h1>示例5</h1>
+  <div>
+    <Button :loading="true">加载中</Button>
+  </div>
 </template>
 
 <script lang="ts">
