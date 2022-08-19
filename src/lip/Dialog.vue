@@ -1,22 +1,24 @@
 <template>
   <div v-if="visible">
-    <!-- 这部分内容是做mask-->
-    <div class="gulu-dialog-overlay" @click="closeDialogMaskFn"></div>
-    <div class="gulu-dialog-wrapper">
-      <div class="gulu-dialog">
-        <header>
-          <slot name="title" />
-          <span class="gulu-dialog-close" @click="closeDialog"></span>
-        </header>
-        <main>
-          <slot name="content" />
-        </main>
-        <footer>
-          <Button level="main" @click="okDialog">确认</Button>
-          <Button @click="cancelDialog">取消</Button>
-        </footer>
+    <teleport to="body">
+      <!-- 这部分内容是做mask-->
+      <div class="gulu-dialog-overlay" @click="closeDialogMaskFn"></div>
+      <div class="gulu-dialog-wrapper">
+        <div class="gulu-dialog">
+          <header>
+            <slot name="title" />
+            <span class="gulu-dialog-close" @click="closeDialog"></span>
+          </header>
+          <main>
+            <slot name="content" />
+          </main>
+          <footer>
+            <Button level="main" @click="okDialog">确认</Button>
+            <Button @click="cancelDialog">取消</Button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </teleport>
   </div>
 </template>
 
