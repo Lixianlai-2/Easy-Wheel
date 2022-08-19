@@ -213,6 +213,7 @@ $grey: grey;
     height: 14px;
     margin-right: 4px;
     border-radius: 8px;
+    display: block;
     border-color: $blue $blue $blue transparent;
     border-style: solid;
     border-width: 2px;
