@@ -1,7 +1,7 @@
 <template>
   <div v-if="visible">
     <!-- 这部分内容是做mask-->
-    <div class="gulu-dialog-overlay" @click="closeDialogMask"></div>
+    <div class="gulu-dialog-overlay" @click="closeDialogMaskFn"></div>
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
         <header>
@@ -29,7 +29,7 @@ export default {
     visible: {
       default: false,
     },
-    closeDialogMask: {
+    closeDialogMaskOrNot: {
       type: Boolean,
     },
     okDialog: {
@@ -47,16 +47,18 @@ export default {
       context.emit("update:visible", false);
     };
 
-    let closeDialogMask = () => {
-      if (props.closeDialogMask) {
+    // 用于点击遮罩层时关闭对话框
+    let closeDialogMaskFn = () => {
+      // 通过在DiaLogDemo中设置closeDialogMaskOrNot是true还是false,来决定点击遮罩层时是否关闭对话框
+      if (props.closeDialogMaskOrNot) {
         console.log(`props.closeDialogMask@@`, props.closeDialogMask);
         closeDialog();
       }
     };
 
     let okDialog = () => {
-      // 可选链，如果props.ok存在，再执行后面的操作
-      if (props.ok?.() !== false) {
+      // 当这个方法存在，且执行之后的返回值不为false，才关闭弹窗
+      if (props.okDialog && props.okDialog() !== false) {
         closeDialog();
       }
     };
@@ -68,7 +70,7 @@ export default {
     };
     return {
       closeDialog,
-      closeDialogMask,
+      closeDialogMaskFn,
       okDialog,
       cancelDialog,
     };

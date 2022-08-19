@@ -6,7 +6,7 @@
     <!-- 设置是否可以 -->
     <Dialog
       v-model:visible="x"
-      :closeDialogMask="true"
+      :closeDialogMaskOrNot="true"
       :okDialog="fn1"
       :cancelDialog="fn2"
     />
@@ -25,7 +25,9 @@ export default {
       console.log("works", x.value);
     };
 
-    const fn1 = () => false;
+    const fn1 = () => {
+      return true;
+    };
     const fn2 = () => {};
     return {
       x,
