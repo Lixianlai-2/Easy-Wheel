@@ -1,24 +1,29 @@
 <template>
-  <!-- 这部分内容是做mask-->
-  <div class="gulu-dialog-overlay"></div>
-  <div class="gulu-dialog-wrapper">
-    <div class="gulu-dialog">
-      <header>标题 <span class="gulu-dialog-close"></span></header>
-      <main>
-        <p>第一行内容</p>
-        <p>第二行内容</p>
-      </main>
-      <footer>
-        <Button level="main">确认</Button>
-        <Button>取消</Button>
-      </footer>
+  <div v-if="visible">
+    <!-- 这部分内容是做mask-->
+    <div class="gulu-dialog-overlay"></div>
+    <div class="gulu-dialog-wrapper">
+      <div class="gulu-dialog">
+        <header>标题 <span class="gulu-dialog-close"></span></header>
+        <main>
+          <p>第一行内容</p>
+          <p>第二行内容</p>
+        </main>
+        <footer>
+          <Button level="main">确认</Button>
+          <Button>取消</Button>
+        </footer>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Button from "./Button.vue";
-export default { components: { Button } };
+export default {
+  props: ["visible"],
+  components: { Button },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -41,7 +46,7 @@ $border-color: #d9d9d9;
     width: 100%;
     height: 100%;
     background: fade_out(black, 0.5);
-    z-index: 10;
+    z-index: 1;
   }
   // 将弹窗相对viewport居中
   &-wrapper {
@@ -49,7 +54,7 @@ $border-color: #d9d9d9;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 11;
+    z-index: 1;
   }
 
   > header {
