@@ -5,12 +5,11 @@
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
         <header>
-          标题
+          <slot name="title" />
           <span class="gulu-dialog-close" @click="closeDialog"></span>
         </header>
         <main>
-          <p>第一行内容</p>
-          <p>第二行内容</p>
+          <slot name="content" />
         </main>
         <footer>
           <Button level="main" @click="okDialog">确认</Button>

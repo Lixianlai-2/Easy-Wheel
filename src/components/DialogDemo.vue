@@ -3,13 +3,21 @@
     Dialog 示例
     <h1>示例一</h1>
     <Button @click="toggle">切换</Button>
-    <!-- 设置是否可以 -->
     <Dialog
       v-model:visible="x"
       :closeDialogMaskOrNot="true"
       :okDialog="fn1"
       :cancelDialog="fn2"
-    />
+    >
+      <template v-slot:content>
+        <strong>内容</strong>
+        <div>hello</div>
+      </template>
+
+      <template v-slot:title>
+        <strong>标题</strong>
+      </template>
+    </Dialog>
   </div>
 </template>
 
