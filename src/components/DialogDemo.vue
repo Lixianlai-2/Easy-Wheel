@@ -3,14 +3,20 @@
     Dialog 示例
     <h1>示例一</h1>
     <Button @click="toggle">切换</Button>
-    <Dialog v-model:visible="x" />
+    <!-- 设置是否可以 -->
+    <Dialog
+      v-model:visible="x"
+      :closeDialogMask="true"
+      :okDialog="fn1"
+      :cancelDialog="fn2"
+    />
   </div>
 </template>
 
 <script>
 import Dialog from "../lip/Dialog.vue";
 import Button from "../lip/Button.vue";
-import { reactive, ref } from "@vue/reactivity";
+import { ref } from "@vue/reactivity";
 export default {
   setup() {
     let x = ref(false);
@@ -18,9 +24,14 @@ export default {
       x.value = !x.value;
       console.log("works", x.value);
     };
+
+    const fn1 = () => false;
+    const fn2 = () => {};
     return {
       x,
       toggle,
+      fn1,
+      fn2,
     };
   },
   components: { Dialog, Button },

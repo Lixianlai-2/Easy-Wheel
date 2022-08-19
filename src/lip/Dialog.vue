@@ -1,17 +1,20 @@
 <template>
   <div v-if="visible">
     <!-- 这部分内容是做mask-->
-    <div class="gulu-dialog-overlay"></div>
+    <div class="gulu-dialog-overlay" @click="closeDialogMask"></div>
     <div class="gulu-dialog-wrapper">
       <div class="gulu-dialog">
-        <header>标题 <span class="gulu-dialog-close"></span></header>
+        <header>
+          标题
+          <span class="gulu-dialog-close" @click="closeDialog"></span>
+        </header>
         <main>
           <p>第一行内容</p>
           <p>第二行内容</p>
         </main>
         <footer>
-          <Button level="main">确认</Button>
-          <Button>取消</Button>
+          <Button level="main" @click="okDialog">确认</Button>
+          <Button @click="cancelDialog">取消</Button>
         </footer>
       </div>
     </div>
@@ -21,8 +24,55 @@
 <script>
 import Button from "./Button.vue";
 export default {
-  props: ["visible"],
+  // props: ["visible"],
+  props: {
+    visible: {
+      default: false,
+    },
+    closeDialogMask: {
+      type: Boolean,
+    },
+    okDialog: {
+      type: Function,
+    },
+    cancelDialog: {
+      type: Function,
+    },
+  },
   components: { Button },
+
+  setup(props, context) {
+    let closeDialog = () => {
+      // 通过这个自动更新事件，传递新的值给visible，这个值的改变是在DialogDemo里面进行操作的，我并没有在这里直接修改Props
+      context.emit("update:visible", false);
+    };
+
+    let closeDialogMask = () => {
+      if (props.closeDialogMask) {
+        console.log(`props.closeDialogMask@@`, props.closeDialogMask);
+        closeDialog();
+      }
+    };
+
+    let okDialog = () => {
+      // 可选链，如果props.ok存在，再执行后面的操作
+      if (props.ok?.() !== false) {
+        closeDialog();
+      }
+    };
+
+    let cancelDialog = () => {
+      // 注意跟attrs的区别，这里的作用是什么？
+      // context.emit("cancelDialog");
+      closeDialog();
+    };
+    return {
+      closeDialog,
+      closeDialogMask,
+      okDialog,
+      cancelDialog,
+    };
+  },
 };
 </script>
 
