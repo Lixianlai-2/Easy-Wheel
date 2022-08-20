@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Tabs>
+    <!-- 给Tabs绑定属性selectedAttr,注意这里用的不是v-bind,所以写字符串是可以的 -->
+    <Tabs selectedAttr="导航一">
       <Tab title="导航一">内容1</Tab>
       <Tab title="导航二">内容2</Tab>
     </Tabs>

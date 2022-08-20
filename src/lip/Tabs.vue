@@ -1,9 +1,15 @@
 <template>
   <div class="gulu-tabs">
     <div class="gulu-tabs-nav">
-      <!-- title是属性构成的数组，t就是单个属性 -->
-      <div class="gulu-tabs-nav-item" v-for="(t, index) in title" :key="index">
-        {{ t }}
+      <!-- title是属性构成的数组，t就是单个title属性 -->
+      <!-- 绑定class的对象写法，对象中的属性值的true代表class生效，false代表class不生效 -->
+      <div
+        :class="{ selected: t === selectedAttr }"
+        class="gulu-tabs-nav-item"
+        v-for="(t, index) in title"
+        :key="index"
+      >
+        这里是t:{{ t }}
       </div>
     </div>
 
@@ -16,13 +22,22 @@
       ></component>
     </div>
   </div>
+
+  <h2>selectedAttr{{ selectedAttr }}</h2>
 </template>
 
 <script>
 // 引入子组件
 import Tab from "./Tab.vue";
 export default {
+  props: {
+    selectedAttr: {
+      type: String,
+    },
+  },
   setup(props, context) {
+    console.log(props);
+
     // defaults是一个包含对象的数组
     const defaults = context.slots.default();
     // 遍历数组，得到其中的对象，然后通过对象.type判断是否为某个Tab组件
