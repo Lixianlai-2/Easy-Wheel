@@ -49,7 +49,7 @@ export default {
 
     const getTitle = (t) => {
       console.log(`getTitle:`, t);
-      context.emit("changeSelectAttr", t);
+      context.emit("update:selectedAttr", t);
     };
 
     return {
