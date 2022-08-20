@@ -1,5 +1,6 @@
 <template>
   <div class="gulu-tabs">
+    <!-- 导航部分 -->
     <div class="gulu-tabs-nav">
       <!-- title是属性构成的数组，t就是单个title属性 -->
       <!-- 绑定class的对象写法，对象中的属性值的true代表class生效，false代表class不生效 -->
@@ -8,6 +9,7 @@
         class="gulu-tabs-nav-item"
         v-for="(t, index) in title"
         :key="index"
+        @click="getTitle(t)"
       >
         这里是t:{{ t }}
       </div>
@@ -30,14 +32,8 @@
 // 引入子组件
 import Tab from "./Tab.vue";
 export default {
-  props: {
-    selectedAttr: {
-      type: String,
-    },
-  },
+  props: ["selectedAttr"],
   setup(props, context) {
-    console.log(props);
-
     // defaults是一个包含对象的数组
     const defaults = context.slots.default();
     // 遍历数组，得到其中的对象，然后通过对象.type判断是否为某个Tab组件
@@ -51,11 +47,15 @@ export default {
     // 得到子组件的属性,再得到其中的title(数组包含着)
     const title = defaults.map((item) => item.props.title);
 
-    console.log(defaults);
+    const getTitle = (t) => {
+      console.log(`getTitle:`, t);
+      context.emit("changeSelectAttr", t);
+    };
 
     return {
       defaults,
       title,
+      getTitle,
     };
   },
 };
