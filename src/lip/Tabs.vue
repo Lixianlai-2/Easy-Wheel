@@ -1,11 +1,21 @@
 <template>
-  <!-- title是属性构成的数组，t就是单个属性 -->
-  <div v-for="(t, index) in title" :key="index">
-    {{ t }}
-  </div>
+  <div class="gulu-tabs">
+    <div class="gulu-tabs-nav">
+      <!-- title是属性构成的数组，t就是单个属性 -->
+      <div class="gulu-tabs-nav-item" v-for="(t, index) in title" :key="index">
+        {{ t }}
+      </div>
+    </div>
 
-  <!-- c就是defaults数组里面的对象，每一个c就代表一个标签，而:is='c'就是让这个component成为Tab组件 -->
-  <component v-for="(c, index) in defaults" :key="index" :is="c"></component>
+    <div class="gulu-tabs-content">
+      <!-- c就是defaults数组里面的对象，每一个c就代表一个标签，而:is='c'就是让这个component成为Tab组件，这里也相当于在使用自定义的插槽 -->
+      <component
+        v-for="(c, index) in defaults"
+        :key="index"
+        :is="c"
+      ></component>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -36,4 +46,31 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+// 设置变量，方便复用
+$blue: #40a9ff;
+$color: #333;
+$border-color: #d9d9d9;
+// -----------------------------
+.gulu-tabs {
+  &-nav {
+    display: flex;
+    color: $color;
+    border-bottom: 1px solid $border-color;
+    &-item {
+      padding: 8px 0;
+      margin: 0 16px;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+      &.selected {
+        color: $blue;
+      }
+    }
+  }
+  &-content {
+    padding: 8px 0;
+  }
+}
+</style>
