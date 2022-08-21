@@ -1,7 +1,7 @@
 <template>
   <div class="gulu-tabs">
     <!-- 导航部分 -->
-    <div class="gulu-tabs-nav">
+    <div class="gulu-tabs-nav" ref="navContainer">
       <!-- 想要获得v-for遍历形成的html标签，ref声明时要用[] -->
       <div
         :class="{ selected: t === selectedAttr }"
@@ -17,6 +17,7 @@
       <div class="gulu-tabs-nav-indicator" ref="refIndicator"></div>
     </div>
 
+    <!-- 内容部分 -->
     <div class="gulu-tabs-content">
       <!-- 使用component插槽 -->
       <component
@@ -29,19 +30,27 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from "@vue/runtime-core";
+import {
+  computed,
+  onMounted,
+  onUpdated,
+  ref,
+  watchEffect,
+} from "@vue/runtime-core";
 // 引入子组件
 import Tab from "./Tab.vue";
 export default {
   props: ["selectedAttr"],
   setup(props, context) {
+    // 得到导航部分的容器，想得到它的left值，以动态移动下划线
+    const navContainer = ref(null);
+
     // 获得形成下划线的那个div标签
     const refIndicator = ref(null);
     // 获得v-for形成的引用对象，引用对象的value里面是遍历形成的html标签
     const itemRefs = ref([]);
-    onMounted(() => {
-      console.log(`itemRefs!!`, itemRefs);
 
+    let x = function () {
       // 得到v-for所遍历形成的对象，这里面是html标签，也就是说，这里面有多个div
       const divs = itemRefs.value;
 
@@ -51,11 +60,20 @@ export default {
       )[0];
 
       // 得到被选中的那个导航Div的长度
-      const { width } = selectedDiv.getBoundingClientRect();
+      const { width, left: leftSelectedDiv } =
+        selectedDiv.getBoundingClientRect();
+
+      const { left: leftNavContainer } =
+        navContainer.value.getBoundingClientRect();
+
+      const left = leftSelectedDiv - leftNavContainer;
+      refIndicator.value.style.left = left + "px";
 
       // 让下划线div的长度等于导航部分的长度
       refIndicator.value.style.width = width + "px";
-    });
+    };
+    onMounted(x);
+    onUpdated(x);
 
     // defaults是一个包含对象的数组
     const defaults = context.slots.default();
@@ -89,6 +107,7 @@ export default {
       current,
       itemRefs,
       refIndicator,
+      navContainer,
     };
   },
 };
