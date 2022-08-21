@@ -2,8 +2,6 @@
   <div class="gulu-tabs">
     <!-- 导航部分 -->
     <div class="gulu-tabs-nav">
-      <!-- title是属性构成的数组，t就是单个title属性 -->
-      <!-- 绑定class的对象写法，对象中的属性值的true代表class生效，false代表class不生效 -->
       <div
         :class="{ selected: t === selectedAttr }"
         class="gulu-tabs-nav-item"
@@ -13,10 +11,11 @@
       >
         {{ t }}
       </div>
+      <div class="gulu-tabs-nav-indicator"></div>
     </div>
 
     <div class="gulu-tabs-content">
-      <!-- c就是defaults数组里面的对象，每一个c就代表一个标签，而:is='c'就是让这个component成为Tab组件，这里也相当于在使用自定义的插槽 -->
+      <!-- 使用component插槽 -->
       <component
         class="gulu-tabs-content-item"
         :is="current"
@@ -43,14 +42,12 @@ export default {
       }
     });
 
-    // 找到当前的组件
+    // 找到被点击的那个组件
     const current = computed(() => {
       return defaults.filter((tag) => {
         return tag.props.title === props.selectedAttr;
       })[0];
     });
-
-    console.log(current);
 
     // 得到子组件的属性,再得到其中的title(数组包含着)
     const title = defaults.map((item) => item.props.title);
@@ -80,6 +77,7 @@ $border-color: #d9d9d9;
     display: flex;
     color: $color;
     border-bottom: 1px solid $border-color;
+    position: relative;
     &-item {
       padding: 8px 0;
       margin: 0 16px;
@@ -90,6 +88,15 @@ $border-color: #d9d9d9;
       &.selected {
         color: $blue;
       }
+    }
+    &-indicator {
+      // 相对nav定位
+      position: absolute;
+      height: 3px;
+      background: $blue;
+      left: 0;
+      bottom: -1px;
+      width: 100px;
     }
   }
   &-content {

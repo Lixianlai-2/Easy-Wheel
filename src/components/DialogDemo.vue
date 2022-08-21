@@ -34,7 +34,6 @@ export default {
     let x = ref(false);
     const toggle = function () {
       x.value = !x.value;
-      console.log("works", x.value);
     };
 
     const fn1 = () => {
