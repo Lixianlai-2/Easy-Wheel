@@ -11,24 +11,23 @@
         :key="index"
         @click="getTitle(t)"
       >
-        这里是t:{{ t }}
+        {{ t }}
       </div>
     </div>
 
     <div class="gulu-tabs-content">
       <!-- c就是defaults数组里面的对象，每一个c就代表一个标签，而:is='c'就是让这个component成为Tab组件，这里也相当于在使用自定义的插槽 -->
       <component
-        v-for="(c, index) in defaults"
-        :key="index"
-        :is="c"
+        class="gulu-tabs-content-item"
+        :is="current"
+        :key="current.props.title"
       ></component>
     </div>
   </div>
-
-  <h2>selectedAttr{{ selectedAttr }}</h2>
 </template>
 
 <script>
+import { computed } from "@vue/runtime-core";
 // 引入子组件
 import Tab from "./Tab.vue";
 export default {
@@ -44,11 +43,19 @@ export default {
       }
     });
 
+    // 找到当前的组件
+    const current = computed(() => {
+      return defaults.filter((tag) => {
+        return tag.props.title === props.selectedAttr;
+      })[0];
+    });
+
+    console.log(current);
+
     // 得到子组件的属性,再得到其中的title(数组包含着)
     const title = defaults.map((item) => item.props.title);
 
     const getTitle = (t) => {
-      console.log(`getTitle:`, t);
       context.emit("update:selectedAttr", t);
     };
 
@@ -56,6 +63,7 @@ export default {
       defaults,
       title,
       getTitle,
+      current,
     };
   },
 };
