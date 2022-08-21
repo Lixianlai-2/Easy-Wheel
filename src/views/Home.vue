@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="topNavAndBanner">
     <Topnav />
     <div class="banner">
       <h1>gulu UI</h1>
@@ -21,8 +21,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.topNavAndBanner {
+  background: linear-gradient(
+    118deg,
+    rgba(87, 146, 233, 1) 0%,
+    rgba(124, 136, 243, 1) 100%
+  );
+}
 .topnav {
-  background: pink;
   display: flex;
   padding: 16px;
   > .logo {
@@ -45,7 +51,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: lightgreen;
+  // background: rgb(237, 240, 250);
   > .actions {
     padding: 8px 0;
     a {

@@ -63,6 +63,7 @@ export default {
       const { width, left: leftSelectedDiv } =
         selectedDiv.getBoundingClientRect();
 
+      // 得到导航栏container的left
       const { left: leftNavContainer } =
         navContainer.value.getBoundingClientRect();
 
@@ -143,7 +144,9 @@ $border-color: #d9d9d9;
       background: $blue;
       left: 0;
       bottom: -1px;
-      width: 100px;
+      // 去除原来的固定内容
+      // width: 50px;
+      transition: all 251ms;
     }
   }
   &-content {

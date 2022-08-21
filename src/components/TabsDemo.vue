@@ -15,7 +15,7 @@ import Tabs from "../lip/Tabs.vue";
 export default {
   components: { Tab, Tabs },
   setup() {
-    let x = ref("导航二");
+    let x = ref("导航一");
     return {
       x,
     };
