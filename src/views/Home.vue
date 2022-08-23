@@ -42,6 +42,9 @@ export default {
     rgba(241, 234, 236, 1) 0%,
     rgba(232, 238, 242, 1) 100%
   );
+  // border-bottom-left-radius: 50% 60px;
+  // border-bottom-right-radius: 50% 60px;
+  clip-path: ellipse(80% 60% at 50% 40%);
 }
 .topnav {
   display: flex;
