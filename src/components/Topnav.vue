@@ -1,6 +1,10 @@
 <template>
   <div class="topnav">
-    <div class="logo">LOGO</div>
+    <div class="logo">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-chashan"></use>
+      </svg>
+    </div>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
@@ -68,5 +72,9 @@ export default {
       display: inline-block;
     }
   }
+}
+
+.icon {
+  font-size: 30px;
 }
 </style>

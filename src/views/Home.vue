@@ -1,13 +1,28 @@
 <template>
-  <div class="topNavAndBanner">
-    <Topnav />
-    <div class="banner">
-      <h1>gulu UI</h1>
-      <h2>一个容易理解的 UI 框架</h2>
-      <p class="actions">
-        <a href="https://github.com/Lixianlai-2/gulu-Wheel">GitHub</a>
-        <router-link to="/doc">开始</router-link>
-      </p>
+  <div>
+    <div class="topNavAndBanner">
+      <Topnav />
+      <div class="banner">
+        <h1>Easy UI</h1>
+        <h3>一个易学易用的 UI 框架</h3>
+        <p class="actions">
+          <a href="https://github.com/Lixianlai-2/gulu-Wheel" class="github"
+            >GitHub</a
+          >
+          <router-link class="start" to="/doc">开始</router-link>
+        </p>
+      </div>
+    </div>
+    <div class="feature">
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-Vue"></use>
+      </svg>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-typescript-def"></use>
+      </svg>
+      <svg class="icon" aria-hidden="true">
+        <use xlink:href="#icon-dengpao"></use>
+      </svg>
     </div>
   </div>
 </template>
@@ -24,8 +39,8 @@ export default {
 .topNavAndBanner {
   background: linear-gradient(
     118deg,
-    rgba(87, 146, 233, 1) 0%,
-    rgba(124, 136, 243, 1) 100%
+    rgba(241, 234, 236, 1) 0%,
+    rgba(232, 238, 242, 1) 100%
   );
 }
 .topnav {
@@ -43,6 +58,9 @@ export default {
       margin: 0 1em;
     }
   }
+  // #e7e7e7
+  box-shadow: rgba(27, 31, 35, 0.11) 0px 1px 0px,
+    rgb(255, 255, 255) 0px 1px 0px inset;
 }
 
 .banner {
@@ -51,19 +69,56 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  h3,
+  .actions {
+    margin-top: 20px;
+  }
+
+  h3 {
+    color: #767676;
+  }
+
   // background: rgb(237, 240, 250);
   > .actions {
     padding: 8px 0;
     a {
       margin: 0 8px;
-      background: #fff;
       display: inline-block;
       $h: 28px;
       height: $h;
       line-height: $h;
       border-radius: $h/2;
-      padding: 0 8px;
+      padding: 0 13px;
     }
   }
+}
+
+.actions .start {
+  background-color: #43b97f;
+  border: none;
+  color: #e1fff9;
+  font-weight: 600;
+  &:hover,
+  &:focus {
+    background: darken(#43b97f, 5%);
+  }
+  // box-shadow: #e1fff9;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.github {
+  background-color: #fefbff9c;
+  border: none;
+  color: #476582;
+  &:hover,
+  &:focus {
+    background: darken(#f1f1f1, 1%);
+  }
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.feature svg {
+  font-size: 64px;
 }
 </style>

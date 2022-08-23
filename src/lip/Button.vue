@@ -57,6 +57,7 @@ export default {
 // $h是什么？指定变量，方便复用
 $h: 32px;
 $border-color: #d9d9d9;
+// $color: #9297ae;
 $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
