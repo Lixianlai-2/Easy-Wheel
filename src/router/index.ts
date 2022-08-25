@@ -38,7 +38,7 @@ let router = createRouter({
         },
         {
           path: "",
-          component: DocContent,
+          component: Intro,
         },
         {
           path: "intro",

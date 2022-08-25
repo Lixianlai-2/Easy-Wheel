@@ -21,9 +21,9 @@ import {Button, Tabs, Switch, Dialog} from "easy-ui"
   </div>
 </template>
 <script>
-import {Button, Tabs, Switch, Dialog} from "easy-ui"
+import { Button, Tabs, Switch, Dialog } from "easy-ui";
 export default {
-  components: {Button}
-}
+  components: { Button },
+};
 </script>
 ```

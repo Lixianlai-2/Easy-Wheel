@@ -6,8 +6,7 @@
       </svg>
     </router-link>
     <ul class="menu">
-      <li>菜单1</li>
-      <li>菜单2</li>
+      <li>文档</li>
     </ul>
     <svg
       v-show="toggleMenuVisible"

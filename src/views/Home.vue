@@ -6,7 +6,7 @@
         <h1>Easy UI</h1>
         <h3>一个易学易用的 UI 框架</h3>
         <p class="actions">
-          <a href="https://github.com/Lixianlai-2/gulu-Wheel" class="github"
+          <a href="https://github.com/Lixianlai-2/Easy-Wheel" class="github"
             >GitHub</a
           >
           <router-link class="start" to="/doc/intro">开始</router-link>
