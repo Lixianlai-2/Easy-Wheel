@@ -14,15 +14,29 @@
       </div>
     </div>
     <div class="feature">
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-Vue"></use>
-      </svg>
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-typescript-def"></use>
-      </svg>
-      <svg class="icon" aria-hidden="true">
-        <use xlink:href="#icon-dengpao"></use>
-      </svg>
+      <ul>
+        <li>
+          <h3>基于Vue3</h3>
+          <p>使用了Vue3 Component Api</p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-Vue"></use>
+          </svg>
+        </li>
+        <li>
+          <h3>使用了Typescript</h3>
+          <p>采用TypeScript书写</p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-typescript-def"></use>
+          </svg>
+        </li>
+        <li>
+          <h3>可读性强</h3>
+          <p>代码清晰干净，容易理解</p>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-jiajiabaojie-tubiao-"></use>
+          </svg>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -119,6 +133,46 @@ export default {
     background: darken(#f1f1f1, 1%);
   }
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.feature {
+  margin: 64px auto;
+  padding: 20px;
+  width: 400px;
+  @media (min-width: 800px) {
+    width: 800px;
+  }
+  @media (min-width: 1200px) {
+    width: 1200px;
+  }
+  > ul {
+    display: flex;
+    flex-wrap: wrap;
+    > li {
+      width: 400px;
+      margin: 16px 0;
+      display: grid;
+      justify-content: start;
+      align-content: space-between;
+      grid-template-areas:
+        "icon title"
+        "icon text";
+      grid-template-columns: 80px auto;
+      grid-template-rows: 1fr auto;
+      > svg {
+        grid-area: icon;
+        width: 64px;
+        height: 64px;
+      }
+      > h3 {
+        grid-area: title;
+        font-size: 28px;
+      }
+      > p {
+        grid-area: text;
+      }
+    }
+  }
 }
 
 .feature svg {
