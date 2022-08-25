@@ -9,14 +9,19 @@
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <span class="toggleAside" @click="asideVisible = !asideVisible"></span>
+    <span
+      v-show="toggleMenuVisible"
+      class="toggleAside"
+      @click="asideVisible = !asideVisible"
+    ></span>
   </div>
 </template>
 
 <script>
-import { inject } from "@vue/runtime-core";
+import { inject, ref } from "@vue/runtime-core";
 export default {
   name: "Topnav",
+  props: ["toggleMenuVisible"],
   setup() {
     let asideVisible = inject("asideVisible");
     return { asideVisible };
