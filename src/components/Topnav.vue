@@ -1,19 +1,22 @@
 <template>
   <div class="topnav">
-    <div class="logo">
+    <router-link to="/" class="logo">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-chashan"></use>
       </svg>
-    </div>
+    </router-link>
     <ul class="menu">
       <li>菜单1</li>
       <li>菜单2</li>
     </ul>
-    <span
+    <svg
       v-show="toggleMenuVisible"
-      class="toggleAside"
+      class="toggleAside icon"
       @click="asideVisible = !asideVisible"
-    ></span>
+      aria-hidden="true"
+    >
+      <use xlink:href="#icon-cc-menu-circle"></use>
+    </svg>
   </div>
 </template>
 
@@ -57,7 +60,6 @@ export default {
     display: inline-block;
     width: 24px;
     height: 24px;
-    background: red;
     position: absolute;
     left: 16px;
     top: 50%;
