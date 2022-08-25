@@ -12,7 +12,7 @@
             <router-link to="/doc/install">安装</router-link>
           </li>
           <li>
-            <router-link to="/doc/start">开始</router-link>
+            <router-link to="/doc/start">快速上手</router-link>
           </li>
           <li>
             <router-link to="/doc/switch">Switch 组件</router-link>
@@ -44,7 +44,7 @@ export default {
 
 <style lang="scss" scoped>
 aside {
-  background: lightblue;
+  background: #eeebee;
   width: 150px;
   padding: 16px;
   position: fixed;
@@ -97,5 +97,11 @@ aside {
 }
 main {
   overflow: auto;
+}
+
+.router-link-active {
+  font-size: 18px;
+  font-weight: bold;
+  color: #42b883;
 }
 </style>

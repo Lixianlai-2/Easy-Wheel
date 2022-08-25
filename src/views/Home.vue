@@ -9,7 +9,7 @@
           <a href="https://github.com/Lixianlai-2/gulu-Wheel" class="github"
             >GitHub</a
           >
-          <router-link class="start" to="/doc">开始</router-link>
+          <router-link class="start" to="/doc/intro">开始</router-link>
         </p>
       </div>
     </div>
