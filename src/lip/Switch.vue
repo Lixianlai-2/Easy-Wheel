@@ -1,5 +1,6 @@
 <template>
   <!-- 增加一个有前缀的class -->
+  <h2>Switch组件示例</h2>
   <button
     class="gulu-switch"
     @click="toggle"
