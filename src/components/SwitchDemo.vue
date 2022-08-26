@@ -7,10 +7,10 @@
     </div>
 
     <div class="demo-actions">
-      <Button>查看代码</Button>
+      <Button @click="visibleCode1 = !visibleCode1">查看代码</Button>
     </div>
 
-    <div class="demo-code">
+    <div class="demo-code show1" v-show="visibleCode1">
       <pre>&lt;Switch v-model:value="bool" /&gt;</pre>
     </div>
   </div>
@@ -21,10 +21,10 @@
     </div>
 
     <div class="demo-actions">
-      <Button>查看代码</Button>
+      <Button @click="visibleCode2 = !visibleCode2">查看代码</Button>
     </div>
 
-    <div class="demo-code">
+    <div class="demo-code show2" v-show="visibleCode2">
       <pre>&lt;Switch v-model:value="bool" /&gt;</pre>
     </div>
   </div>
@@ -36,12 +36,19 @@ import { ref } from "@vue/reactivity";
 import Switch from "../lip/Switch.vue";
 import Switch1Demo from "./Switch1.demo.vue";
 import Switch2Demo from "./Switch2.demo.vue";
+
 export default {
   components: { Switch, Button, Switch1Demo, Switch2Demo },
   setup() {
     let bool = ref(false);
+    let visibleCode1 = ref(true);
+    let visibleCode2 = ref(true);
+
     return {
       bool,
+      // toggleCode,
+      visibleCode1,
+      visibleCode2,
     };
   },
 };
