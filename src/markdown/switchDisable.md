@@ -1,3 +1,4 @@
+```
 <template>
   <div>
     <Switch v-model:value="bool" disable />
@@ -19,3 +20,5 @@ export default {
 </script>
 
 <style scoped></style>
+
+```

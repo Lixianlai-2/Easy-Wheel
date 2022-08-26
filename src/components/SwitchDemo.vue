@@ -5,27 +5,24 @@
     <div class="demo-component">
       <Switch1Demo />
     </div>
-
     <div class="demo-actions">
       <Button @click="visibleCode1 = !visibleCode1">查看代码</Button>
     </div>
-
     <div class="demo-code show1" v-show="visibleCode1">
-      <pre>&lt;Switch v-model:value="bool" /&gt;</pre>
+      <SwitchMd />
     </div>
   </div>
+
   <div class="demo">
     <h2>常规用法</h2>
     <div class="demo-component">
       <Switch2Demo></Switch2Demo>
     </div>
-
     <div class="demo-actions">
       <Button @click="visibleCode2 = !visibleCode2">查看代码</Button>
     </div>
-
     <div class="demo-code show2" v-show="visibleCode2">
-      <pre>&lt;Switch v-model:value="bool" /&gt;</pre>
+      <switchDisableMd />
     </div>
   </div>
 </template>
@@ -36,9 +33,18 @@ import { ref } from "@vue/reactivity";
 import Switch from "../lip/Switch.vue";
 import Switch1Demo from "./Switch1.demo.vue";
 import Switch2Demo from "./Switch2.demo.vue";
+import SwitchMd from "../markdown/switch.md";
+import switchDisableMd from "../markdown/switchDisable.md";
 
 export default {
-  components: { Switch, Button, Switch1Demo, Switch2Demo },
+  components: {
+    Switch,
+    Button,
+    Switch1Demo,
+    Switch2Demo,
+    SwitchMd,
+    switchDisableMd,
+  },
   setup() {
     let bool = ref(false);
     let visibleCode1 = ref(true);

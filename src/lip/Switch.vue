@@ -10,16 +10,15 @@
 </template>
 
 <script lang="ts">
-import { ref } from "@vue/reactivity";
-
 export default {
   props: {
     value: Boolean,
+    disable: Boolean,
   },
   // emits: ["input"],
   setup(props, context) {
     let toggle = () => {
-      // context.emit("input", !props.value);
+      if (props.disable) return;
       context.emit("update:value", !props.value);
     };
     return {

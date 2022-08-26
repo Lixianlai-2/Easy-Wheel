@@ -1,11 +1,12 @@
+```
 <template>
   <div>
-    <Switch v-model:value="bool" disable />
+    <Switch v-model:value="bool" />
   </div>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { ref } from '@vue/reactivity';
 import Switch from "../lip/Switch.vue";
 export default {
   components: { Switch },
@@ -19,3 +20,5 @@ export default {
 </script>
 
 <style scoped></style>
+
+```
