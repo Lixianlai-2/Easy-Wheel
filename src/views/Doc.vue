@@ -43,6 +43,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.nav {
+  background-color: #ffffffe5;
+}
+
 aside {
   background: #eeebee;
   width: 150px;
