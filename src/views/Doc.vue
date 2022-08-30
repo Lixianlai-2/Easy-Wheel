@@ -44,7 +44,9 @@ export default {
 
 <style lang="scss" scoped>
 .nav {
-  background-color: #ffffffe5;
+  @media (max-width: 600px) {
+    background-color: #ffffffe5;
+  }
 }
 
 aside {
