@@ -64,11 +64,8 @@ export default {
 .topnav {
   display: flex;
   padding: 16px;
-
-  @media (min-width: 800px) {
-    // background-color: #efebed3a;
-    transition: border-color 0.5s, background-color 0.5s;
-  }
+  background-color: #efebede7;
+  transition: border-color 0.5s, background-color 0.5s;
 
   > .logo {
     max-width: 6em;
