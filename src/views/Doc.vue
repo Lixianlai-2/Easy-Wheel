@@ -3,7 +3,6 @@
     <Topnav toggleMenuVisible="true" class="nav" />
     <div class="content">
       <aside v-show="asideVisible">
-        <h2>组件列表</h2>
         <ol>
           <li>
             <router-link to="/doc/intro">介绍</router-link>
@@ -14,6 +13,7 @@
           <li>
             <router-link to="/doc/start">快速上手</router-link>
           </li>
+          <h2 class="componentList">组件列表</h2>
           <li>
             <router-link to="/doc/switch">Switch 组件</router-link>
           </li>
@@ -53,6 +53,9 @@ aside {
   padding-top: 70px;
   height: 100%;
   z-index: 1;
+  .componentList {
+    margin-top: 15px;
+  }
   > h2 {
     margin-bottom: 4px;
   }

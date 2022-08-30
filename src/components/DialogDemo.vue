@@ -1,25 +1,31 @@
 <template>
-  <div>
-    <div>Dialog 示例</div>
-    <h1>示例一</h1>
-    <Button @click="toggle">切换</Button>
-    <Dialog
-      v-model:visible="x"
-      :closeDialogMaskOrNot="true"
-      :okDialog="fn1"
-      :cancelDialog="fn2"
-    >
-      <template v-slot:content>
-        <strong>内容</strong>
-        <div>hello</div>
-      </template>
+  <div class="demo">
+    <h2>示例五</h2>
+    <div class="demo-component">
+      <Button @click="toggle">切换</Button>
+      <Dialog
+        v-model:visible="x"
+        :closeDialogMaskOrNot="true"
+        :okDialog="fn1"
+        :cancelDialog="fn2"
+      >
+        <template v-slot:content>
+          <strong>内容</strong>
+          <div>hello</div>
+        </template>
 
-      <template v-slot:title>
-        <strong>标题</strong>
-      </template>
-    </Dialog>
-    <h1>示例2</h1>
-    <Button @click="showDialog">切换2</Button>
+        <template v-slot:title>
+          <strong>标题</strong>
+        </template>
+      </Dialog>
+    </div>
+
+    <div class="demo-actions">
+      <Button @click="visibleCode1 = !visibleCode1">查看代码</Button>
+    </div>
+    <div class="demo-code show1" v-show="visibleCode1">
+      <switch1 />
+    </div>
   </div>
 </template>
 
@@ -29,8 +35,10 @@ import Button from "../lip/Button.vue";
 import { ref } from "@vue/reactivity";
 import openDialog from "../lip/openDialog";
 import { h } from "@vue/runtime-core";
+import switch1 from "../markdown/Dialogs/dialog1.md";
 export default {
   setup() {
+    let visibleCode1 = ref(true);
     let x = ref(false);
     const toggle = function () {
       x.value = !x.value;
@@ -62,9 +70,10 @@ export default {
       fn1,
       fn2,
       showDialog,
+      visibleCode1,
     };
   },
-  components: { Dialog, Button },
+  components: { Dialog, Button, switch1 },
 };
 </script>
 

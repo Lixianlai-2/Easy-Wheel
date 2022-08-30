@@ -1,7 +1,7 @@
 <template>
-  <h1>Switch组件实例</h1>
+  <h1>Switch组件</h1>
   <div class="demo">
-    <h2>常规用法</h2>
+    <h2>普通切换</h2>
     <div class="demo-component">
       <Switch1Demo />
     </div>
@@ -14,7 +14,7 @@
   </div>
 
   <div class="demo">
-    <h2>常规用法</h2>
+    <h2>禁止切换</h2>
     <div class="demo-component">
       <Switch2Demo></Switch2Demo>
     </div>

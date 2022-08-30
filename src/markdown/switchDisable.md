@@ -1,4 +1,4 @@
-```
+```javascript
 <template>
   <div>
     <Switch v-model:value="bool" disable />

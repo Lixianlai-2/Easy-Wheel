@@ -63,6 +63,12 @@ export default {
 .topnav {
   display: flex;
   padding: 16px;
+
+  @media (min-width: 800px) {
+    background-color: #efebed;
+    transition: border-color 0.5s, background-color 0.5s;
+  }
+
   > .logo {
     max-width: 6em;
     margin-right: auto;
@@ -149,8 +155,9 @@ export default {
     display: flex;
     flex-wrap: wrap;
     > li {
-      width: 400px;
+      width: 375px;
       margin: 16px 0;
+      // padding-right: 20px;
       display: grid;
       justify-content: start;
       align-content: space-between;
