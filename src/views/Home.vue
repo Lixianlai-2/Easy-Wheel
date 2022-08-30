@@ -56,6 +56,7 @@ export default {
     rgba(241, 234, 236, 1) 0%,
     rgba(232, 238, 242, 1) 100%
   );
+
   // border-bottom-left-radius: 50% 60px;
   // border-bottom-right-radius: 50% 60px;
   clip-path: ellipse(80% 60% at 50% 40%);
@@ -65,7 +66,7 @@ export default {
   padding: 16px;
 
   @media (min-width: 800px) {
-    background-color: #efebed;
+    // background-color: #efebed3a;
     transition: border-color 0.5s, background-color 0.5s;
   }
 

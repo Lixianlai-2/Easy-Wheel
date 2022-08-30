@@ -2,7 +2,7 @@
   <div class="demo">
     <h2>示例五</h2>
     <div class="demo-component">
-      <Button @click="toggle">切换</Button>
+      <Button @click="toggle">对话框</Button>
       <Dialog
         v-model:visible="x"
         :closeDialogMaskOrNot="true"
