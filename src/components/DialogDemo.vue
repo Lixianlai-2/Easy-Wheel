@@ -21,7 +21,7 @@
     </div>
 
     <div class="demo-actions">
-      <Button @click="visibleCode1 = !visibleCode1">查看代码</Button>
+      <Button @click="visibleCode1 = !visibleCode1">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode1">
       <switch1 />

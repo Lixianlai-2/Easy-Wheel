@@ -6,7 +6,7 @@
       <Switch1Demo />
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode1 = !visibleCode1">查看代码</Button>
+      <Button @click="visibleCode1 = !visibleCode1">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode1">
       <SwitchMd />
@@ -19,7 +19,7 @@
       <Switch2Demo></Switch2Demo>
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode2 = !visibleCode2">查看代码</Button>
+      <Button @click="visibleCode2 = !visibleCode2">代码</Button>
     </div>
     <div class="demo-code show2" v-show="visibleCode2">
       <switchDisableMd />

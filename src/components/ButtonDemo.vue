@@ -8,7 +8,7 @@
       <Button theme="text">文本</Button>
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode1 = !visibleCode1">查看代码</Button>
+      <Button @click="visibleCode1 = !visibleCode1">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode1">
       <buttonThemeMd />
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode2 = !visibleCode2">查看代码</Button>
+      <Button @click="visibleCode2 = !visibleCode2">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode2">
       <buttonSize />
@@ -70,7 +70,7 @@
       </div>
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode3 = !visibleCode3">查看代码</Button>
+      <Button @click="visibleCode3 = !visibleCode3">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode3">
       <buttonDanger />
@@ -85,7 +85,7 @@
       <Button theme="text" disabled>禁用文本</Button>
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode4 = !visibleCode4">查看代码</Button>
+      <Button @click="visibleCode4 = !visibleCode4">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode4">
       <buttonDisable />
@@ -99,7 +99,7 @@
       <Button>加载完毕</Button>
     </div>
     <div class="demo-actions">
-      <Button @click="visibleCode5 = !visibleCode5">查看代码</Button>
+      <Button @click="visibleCode5 = !visibleCode5">代码</Button>
     </div>
     <div class="demo-code show1" v-show="visibleCode5">
       <buttonLoading />
